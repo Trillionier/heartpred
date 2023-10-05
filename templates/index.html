@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Project Input Form</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0074b3;
+        }
+
+        /* Add CSS for the image */
+        .ml-image {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Heart Disease Prediction by Bharath</h2> 
+    <img src="{{ url_for('static', filename='heart.png') }}" alt="Heart Image" class="ml-image">
+
+    <form id="ml-form" method="post" action="{{ url_for('predict') }}">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label for="sex">Sex (0: Female, 1: Male):</label>
+        <select id="sex" name="sex" required>
+            <option value="1">1</option>
+            <option value="0">0</option>
+        </select><br><br>
+
+        <label for="chest_pain">Chest Pain Type (0: Asymptomatic, 1: Atypical Angina, 2: Non-Anginal Pain, 3: Typical Angina):</label>
+        <select id="chest_pain" name="chest_pain" required>
+            <option value="3">3</option>
+            <option value="0">0</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+        </select><br><br>
+
+        <label for="resting_bp">Resting Blood Pressure (mmHg):</label>
+        <input type="number" id="resting_bp" name="resting_bp" required><br><br>
+
+        <label for="cholesterol">Cholesterol:</label>
+        <input type="number" id="cholesterol" name="cholesterol" required><br><br>
+
+        <label for="fastingbs">Fasting Blood Sugar (0: No, 1: Yes):</label>
+        <select id="fastingbs" name="fastingbs" required>
+            <option value="1">1</option>
+            <option value="0">0</option>
+        </select><br><br>
+
+        <label for="restingecg">Resting ECG Rating (0: LVH, 1: Normal, 2: ST-T Abnormality):</label>
+        <select id="restingecg" name="restingecg" required>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select><br><br>
+
+        <label for="maxhr">Maximum Heart Rate:</label>
+        <input type="number" id="maxhr" name="maxhr" required><br><br>
+
+        <label for="exerciseangina">Exercise-Induced Angina (0: No, 1: Yes):</label>
+        <select id="exerciseangina" name="exerciseangina" required>
+            <option value="1">1</option>
+            <option value="0">0</option>
+        </select><br><br>
+
+        <label for="oldpeak">Old Peak:</label>
+        <input type="number" id="oldpeak" name="oldpeak" required><br><br>
+
+        <label for="stslope">ST Slope (0: Down, 1: Flat, 2: Up):</label>
+        <select id="stslope" name="stslope" required>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+    <h1>Prediction Result:</h1>
+    <p>{{ prediction_result }}</p>
+</body>
+</html>
